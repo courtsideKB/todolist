@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,28 @@
     <!-- Custom styles for this template -->
     <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>It's <%= kindOfDay %></h1>
 
-    <ul>    
-        <% for (var i = 0; i < newListItems.length; i++) {%> 
-            <li><%= newListItems[i] %></li>
-       <% } %> 
-    </ul>
+    <div class="box" id="heading">
+        <h1>It's <%= kindOfDay %></h1>
+    </div>
 
-    <form action="/" method="POST">
-        <input type="text" name="newItem">
-        <button type="submit">Add!</button>
-    </form>
+    <div class="box">
+        <ul>
+            <% for (var i = 0; i < newListItems.length; i++) {%>
+            <div class="item">
+                <input type="checkbox">
+                <p><%= newListItems[i] %></p>
+            </div>
+            <% } %>
+            <form class="item" action="/" method="POST">
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                <button type="submit" name="button">+</button>
+            </form>
+        </ul>
+    </div>
+
 </body>
+
 </html>

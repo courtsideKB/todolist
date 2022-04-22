@@ -9,10 +9,10 @@
 <body>
     <h1>It's <%= kindOfDay %></h1>
 
-    <ul>
-        <li>Code</li>
-        <li>Play chess</li>
-        <li>Work on webapp</li>
+    <ul>    
+        <% for (var i = 0; i < newListItems.length; i++) {%> 
+            <li><%= newListItems[i] %></li>
+       <% } %> 
     </ul>
 
     <form action="/" method="POST">

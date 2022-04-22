@@ -4,6 +4,8 @@ const res = require("express/lib/response");
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.get("/", () => {
     res.send("Hello!");
 }); 

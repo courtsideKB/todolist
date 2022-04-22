@@ -57,14 +57,14 @@ form {
 }
 
 button {
-  min-height: 50px;
+  margin-right: 10px;
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
   background-color: #A683E3;
   color: #fff;
   font-size: 30px;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
   border-width: 0;
 }
 

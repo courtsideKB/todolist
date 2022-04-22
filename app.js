@@ -9,22 +9,26 @@ app.use(bodyParser.urlencoded({
 
 var items = ["Buy food", "Cook food", "Eat food"];
 
+app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-    
+
     var today = new Date();
-    
+
     var options = {
-        weekday: "long",   
+        weekday: "long",
         day: "numeric",
         month: "long"
-    }; 
+    };
 
     var day = today.toLocaleDateString("en-US", options);
 
-    res.render("list", {kindOfDay: day, newListItems: items});
-}); 
+    res.render("list", {
+        kindOfDay: day,
+        newListItems: items
+    });
+});
 
 app.post("/", (req, res) => {
     var item = req.body.newItem;

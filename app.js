@@ -7,35 +7,51 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-var items = ["Buy food", "Cook food", "Eat food"];
+let items = ["Buy food", "Cook food", "Eat food"];
+let workItems = [];
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+/******* Home route get() *******/
+
 app.get("/", (req, res) => {
 
-    var today = new Date();
+    let today = new Date();
 
-    var options = {
+    let options = {
         weekday: "long",
         day: "numeric",
         month: "long"
     };
 
-    var day = today.toLocaleDateString("en-US", options);
+    let day = today.toLocaleDateString("en-US", options);
 
     res.render("list", {
-        kindOfDay: day,
+        listTitle: day,
         newListItems: items
     });
 });
 
+/******* Work route get() *******/
+
+app.get("/work", (req, res) => {
+    res.render("list", {
+        listTitle: "Work",
+        newListItems: workItems
+    });
+});
+
 app.post("/", (req, res) => {
-    var item = req.body.newItem;
+    let item = req.body.newItem;
 
-    items.push(item);
-
-    res.redirect("/");
+    if (req.body.list === "Work") {
+        workItems.push(item);
+        res.redirect("/work");
+    } else {
+        items.push(item);
+        res.redirect("/");
+    }
 });
 
 app.listen(3000, () => {

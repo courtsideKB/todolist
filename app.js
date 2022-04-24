@@ -42,6 +42,12 @@ app.get("/work", (req, res) => {
     });
 });
 
+/******* About me route get() *******/
+
+app.get("/about", (req, res) => {
+    res.render("about"); 
+});
+
 app.post("/", (req, res) => {
     let item = req.body.newItem;
 
